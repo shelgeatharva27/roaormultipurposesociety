@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roaor Multipurpose Society</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e8ede5 100%);
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header */
+    header {
+      background: white;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 4px solid #D2691E;
+    }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+    }
+    
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+      color: #2d5016;
+      font-family: 'Playfair Display', serif;
+    }
+    
+    nav {
+      display: flex;
+      gap: 30px;
+    }
+    
+    nav a {
+      text-decoration: none;
+      color: #2d5016;
+      font-weight: 600;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+    
+    nav a:hover {
+      color: #D2691E;
+    }
+    
+    nav a.active {
+      color: #D2691E;
+      border-bottom: 2px solid #D2691E;
+      padding-bottom: 5px;
+    }
+    
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: #2d5016;
+      cursor: pointer;
+    }
+    
+    .mobile-menu {
+      display: none;
+      background: white;
+      border-top: 1px solid #e0e0e0;
+    }
+    
+    .mobile-menu a {
+      display: block;
+      padding: 15px 20px;
+      text-decoration: none;
+      color: #2d5016;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    
+    .mobile-menu a:hover {
+      background: #f0f9f4;
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, rgba(45, 80, 22, 0.85), rgba(74, 124, 47, 0.75)), 
+                  url('https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1920') center/cover;
+      color: white;
+      text-align: center;
+      padding: 120px 20px;
+    }
+    
+    .hero h1 {
+      font-size: 56px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      font-family: 'Playfair Display', serif;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .hero p {
+      font-size: 22px;
+      margin-bottom: 40px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      font-weight: 300;
+    }
+    
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      padding: 15px 40px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: all 0.3s;
+      display: inline-block;
+    }
+    
+    .btn-safari {
+      background: linear-gradient(135deg, #8B4513, #D2691E, #CD853F);
+      color: white;
+      box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
+    }
+    
+    .btn-safari:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(139, 69, 19, 0.5);
+    }
+    
+    .btn-white {
+      background: white;
+      color: #2d5016;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    
+    .btn-white:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(45, 80, 22, 0.3);
+    }
+    
+    /* Sections */
+    section {
+      padding: 80px 20px;
+    }
+    
+    .section-title {
+      font-size: 42px;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 60px;
+      color: #2d5016;
+      font-family: 'Playfair Display', serif;
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, #8B4513, #D2691E, #8B4513);
+    }
+    
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      margin-top: 40px;
+    }
+    
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .grid-6 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    
+    .card {
+      background: linear-gradient(135deg, #ffffff, #f8f9f5);
+      border: 2px solid #e8ede5;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      transition: all 0.3s;
+    }
+    
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 30px rgba(139, 69, 19, 0.2);
+      border-color: #D2691E;
+    }
+    
+    .card h3 {
+      font-size: 28px;
+      color: #2d5016;
+      margin-bottom: 20px;
+      font-family: 'Playfair Display', serif;
+    }
+    
+    .card p {
+      color: #555;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+    
+    .card ul {
+      margin-top: 20px;
+      padding-left: 20px;
+      color: #666;
+    }
+    
+    .card ul li {
+      margin-bottom: 10px;
+    }
+    
+    .icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+      display: block;
+    }
+    
+    .border-left-green {
+      border-left: 8px solid #2d5016;
+    }
+    
+    .border-left-orange {
+      border-left: 8px solid #D2691E;
+    }
+    
+    .border-top-green {
+      border-top: 8px solid #2d5016;
+    }
+    
+    /* Activities Section */
+    .activities {
+      background: linear-gradient(to bottom, #f0f9f4, white);
+    }
+    
+    .activity-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+      margin-top: 50px;
+    }
+    
+    .activity-header:first-of-type {
+      margin-top: 0;
+    }
+    
+    .activity-line {
+      width: 4px;
+      height: 50px;
+      background: linear-gradient(135deg, #2d5016, #4a7c2f);
+      border-radius: 10px;
+      margin-right: 15px;
+    }
+    
+    .activity-header h3 {
+      font-size: 32px;
+      color: #2d5016;
+      font-family: 'Playfair Display', serif;
+    }
+    
+    .sport-badge {
+      background: linear-gradient(135deg, #d4edda, #c3e6cb);
+      border: 2px solid #b1dfbb;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      font-weight: 600;
+      color: #2d5016;
+      transition: all 0.3s;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .sport-badge:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 15px rgba(45, 80, 22, 0.2);
+    }
+    
+    /* Gallery Section */
+    .gallery-item {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      transition: all 0.3s;
+      border: 4px solid white;
+    }
+    
+    .gallery-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 30px rgba(139, 69, 19, 0.3);
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+    }
+    
+    .gallery-caption {
+      background: linear-gradient(135deg, #8B4513, #D2691E);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 18px;
+      font-family: 'Playfair Display', serif;
+    }
+    
+    /* Team Section */
+    .team {
+      background: linear-gradient(to bottom, #fff8e1, #f0f9f4);
+    }
+    
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .team-card {
+      background: linear-gradient(135deg, #ffffff, #f8f9f5);
+      border: 2px solid #e8ede5;
+      border-radius: 20px;
+      padding: 40px 30px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      transition: all 0.3s;
+      border-top: 8px solid #2d5016;
+    }
+    
+    .team-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 30px rgba(45, 80, 22, 0.2);
+    }
+    
+    .team-card .icon {
+      font-size: 56px;
+    }
+    
+    .team-card h3 {
+      color: #2d5016;
+      font-size: 20px;
+      margin-bottom: 10px;
+      font-family: 'Playfair Display', serif;
+    }
+    
+    .team-card p {
+      color: #D2691E;
+      font-weight: 600;
+    }
+    
+    /* Contact Section */
+    .contact-info {
+      background: linear-gradient(135deg, #ffffff, #f8f9f5);
+      border: 2px solid #e8ede5;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      border-left: 8px solid #D2691E;
+    }
+    
+    .contact-info h3 {
+      font-size: 28px;
+      color: #2d5016;
+      margin-bottom: 20px;
+      font-family: 'Playfair Display', serif;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .contact-info p {
+      color: #555;
+      margin-bottom: 15px;
+      line-height: 1.8;
+    }
+    
+    .contact-form {
+      background: linear-gradient(135deg, #ffffff, #f8f9f5);
+      border: 2px solid #e8ede5;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    
+    .contact-form h3 {
+      font-size: 28px;
+      color: #2d5016;
+      margin-bottom: 30px;
+      font-family: 'Playfair Display', serif;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 20px;
+      border: 2px solid #c3e6cb;
+      border-radius: 15px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      transition: all 0.3s;
+    }
+    
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: #2d5016;
+      box-shadow: 0 0 0 3px rgba(45, 80, 22, 0.1);
+    }
+    
+    .contact-form button {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(135deg, #2d5016, #4a7c2f);
+      color: white;
+      border: none;
+      border-radius: 15px;
+      font-weight: 700;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(45, 80, 22, 0.3);
+    }
+    
+    .contact-form button:hover {
+      transform: scale(1.02);
+      box-shadow: 0 6px 20px rgba(45, 80, 22, 0.4);
+    }
+    
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, #2d5016, #4a7c2f);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
+    }
+    
+    footer p {
+      margin: 10px 0;
+    }
+    
+    .footer-subtitle {
+      color: #c3e6cb;
+      font-size: 14px;
+    }
+    
+    .footer-icons {
+      font-size: 32px;
+      margin-top: 15px;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+      
+      .menu-toggle {
+        display: block;
+      }
+      
+      .mobile-menu.active {
+        display: block;
+      }
+      
+      .hero h1 {
+        font-size: 36px;
+      }
+      
+      .hero p {
+        font-size: 18px;
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .section-title {
+        font-size: 32px;
+      }
+      
+      .grid-2, .grid-3, .grid-4, .grid-6 {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">🌿 ROAOR SOCIETY</div>
+        <button class="menu-toggle" id="menu-toggle">☰</button>
+        <nav id="navbar">
+          <a href="#home">HOME</a>
+          <a href="#about">VISION & MISSION</a>
+          <a href="#services">ACTIVITIES</a>
+          <a href="#gallery">GALLERY</a>
+          <a href="#team">TEAM</a>
+          <a href="#contact" class="active">CONTACT US</a>
+        </nav>
+      </div>
+      <div class="mobile-menu" id="mobile-menu">
+        <a href="#home">HOME</a>
+        <a href="#about">VISION & MISSION</a>
+        <a href="#services">ACTIVITIES</a>
+        <a href="#membership">MEMBERSHIP</a>
+        <a href="#gallery">GALLERY</a>
+        <a href="#team">TEAM</a>
+        <a href="#contact">CONTACT US</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="container">
+      <h1>Roaor Multipurpose Society</h1>
+      <p>Promoting Social Justice, Well-being, and Community Empowerment in Maharashtra.</p>
+      <div class="hero-buttons">
+        <a href="#about" class="btn btn-safari">Our Mission</a>
+        <a href="#contact" class="btn btn-white">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vision & Mission -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">Our Vision & Mission</h2>
+      <div class="grid-2">
+        <div class="card border-left-green">
+          <span class="icon">🌱</span>
+          <h3>VISION</h3>
+          <p>Our vision is to achieve a more <b>just, equitable, and empowered society</b>. We strive to build a new social order based on dignity and justice, ensuring equal participation for all.</p>
+          <ul>
+            <li>Focus on a better future</li>
+            <li>Emphasis on empowerment</li>
+            <li>Commitment to values</li>
+          </ul>
+        </div>
+        <div class="card border-left-orange">
+          <span class="icon">🌍</span>
+          <h3>MISSION</h3>
+          <p>Our mission focuses on <b>social justice, human dignity, and well-being</b>. We help individuals and communities solve problems and grow through responsive actions.</p>
+          <ul>
+            <li>Empowering communities</li>
+            <li>Addressing social challenges</li>
+            <li>Promoting equity and respect</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Activities -->
+  <section class="activities" id="services">
+    <div class="container">
+      <h2 class="section-title">Our Diverse Activities</h2>
+      <p style="text-align: center; font-size: 18px; color: #666; max-width: 800px; margin: 0 auto 40px;">We operate across social welfare, sports, and tourism to fulfill our mission.</p>
+
+      <!-- Social Welfare -->
+      <div class="activity-header">
+        <div class="activity-line"></div>
+        <h3>Social Welfare & Development</h3>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <span class="icon">🧑‍🎓</span>
+          <h3 style="font-size: 20px;">Education Support</h3>
+          <p>Ensuring continuous learning for the underprivileged.</p>
+        </div>
+        <div class="card">
+          <span class="icon">⚕️</span>
+          <h3 style="font-size: 20px;">Health Initiatives</h3>
+          <p>Organizing health camps for community well-being.</p>
+        </div>
+        <div class="card">
+          <span class="icon">🏠</span>
+          <h3 style="font-size: 20px;">Shelter Homes</h3>
+          <p>Providing safe living for those in need.</p>
+        </div>
+      </div>
+
+      <!-- Sports -->
+      <div class="activity-header">
+        <div class="activity-line"></div>
+        <h3>Club & Sports Activities</h3>
+      </div>
+      <div class="grid-6">
+        <div class="sport-badge">Billiards</div>
+        <div class="sport-badge">Chess</div>
+        <div class="sport-badge">Table Tennis</div>
+        <div class="sport-badge">Shuttlecock</div>
+        <div class="sport-badge">Carom Board</div>
+        <div class="sport-badge">Tennis/Kolt</div>
+      </div>
+
+      <!-- Tourism -->
+      <div class="activity-header">
+        <div class="activity-line"></div>
+        <h3>Tourism & Leisure</h3>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <span class="icon">🐅</span>
+          <h3 style="font-size: 20px;">Tiger Safari</h3>
+          <p>Connecting wildlife conservation with community empowerment.</p>
+        </div>
+        <div class="card">
+          <span class="icon">🏡</span>
+          <h3 style="font-size: 20px;">Road Farm Stay</h3>
+          <p>Peaceful retreat that supports our social initiatives.</p>
+        </div>
+        <div class="card">
+          <span class="icon">🍽️</span>
+          <h3 style="font-size: 20px;">Ruchi Rasoi</h3>
+          <p>Skill development through culinary experiences.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Membership -->
+  <section id="membership" style="background: linear-gradient(to bottom, white, #f0f9f4); padding: 80px 20px;">
+    <div class="container">
+      <h2 class="section-title">Membership Champion</h2>
+      <div class="grid-3">
+        <div class="card" style="display: flex; flex-direction: column;">
+          <img src="https://placehold.co/600x400/2d5016/ffffff?text=Permanent+Member" 
+               alt="Permanent Member" 
+               style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 20px;">
+          <h3 style="font-size: 22px; color: #2d5016; margin-bottom: 15px;">Permanent Member Enrollment</h3>
+          <p style="color: #666; font-size: 15px; line-height: 1.7; flex-grow: 1;">
+            Lifetime access to all Roaor Multipurpose Society benefits. Get exclusive offers, event invitations, and community privileges.
+          </p>
+          <button class="btn btn-safari" style="margin-top: 20px; width: 100%; padding: 12px;">Join Now</button>
+        </div>
+        <div class="card" style="display: flex; flex-direction: column;">
+          <img src="https://placehold.co/600x400/8B4513/ffffff?text=Guest+Member" 
+               alt="Guest Member" 
+               style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 20px;">
+          <h3 style="font-size: 22px; color: #2d5016; margin-bottom: 15px;">Guest Member Enrollment</h3>
+          <p style="color: #666; font-size: 15px; line-height: 1.7; flex-grow: 1;">
+            Enjoy short-term access to our amenities and programs. Ideal for visitors seeking to explore our community offerings.
+          </p>
+          <button class="btn btn-safari" style="margin-top: 20px; width: 100%; padding: 12px;">Join Now</button>
+        </div>
+        <div class="card" style="display: flex; flex-direction: column;">
+          <img src="https://placehold.co/600x400/4a7c2f/ffffff?text=Time+Bound+Member" 
+               alt="Time Bound Member" 
+               style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 20px;">
+          <h3 style="font-size: 22px; color: #2d5016; margin-bottom: 15px;">Time Bound Member Enrollment</h3>
+          <p style="color: #666; font-size: 15px; line-height: 1.7; flex-grow: 1;">
+            Join us for a fixed period with customizable membership durations. Perfect for seasonal participation and flexible engagement.
+          </p>
+          <button class="btn btn-safari" style="margin-top: 20px; width: 100%; padding: 12px;">Join Now</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery">
+    <div class="container">
+      <h2 class="section-title">Our Gallery</h2>
+      <div class="grid-3">
+        <div class="gallery-item">
+          <img src="https://placehold.co/600x400/2d5016/ffffff?text=Road+Farm+Stay" alt="Road Farm Stay">
+          <div class="gallery-caption">Road Farm Stay</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://placehold.co/600x400/8B4513/ffffff?text=Ruchi+Rasoi" alt="Ruchi Rasoi">
+          <div class="gallery-caption">Ruchi Rasoi</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://placehold.co/600x400/4a7c2f/ffffff?text=Restaurant" alt="Restaurant">
+          <div class="gallery-caption">Restaurant</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="team" id="team">
+    <div class="container">
+      <h2 class="section-title">Our Team</h2>
+      <div class="grid-4">
+        <div class="team-card">
+          <span class="icon">👤</span>
+          <h3>L Suresh Kamname</h3>
+          <p>Founder</p>
+        </div>
+        <div class="team-card">
+          <span class="icon">🧑‍💼</span>
+          <h3>L Shreya Kamname</h3>
+          <p>Chairman</p>
+        </div>
+        <div class="team-card">
+          <span class="icon">🧑‍💻</span>
+          <h3>L Nagesh Kamname</h3>
+          <p>M.D.</p>
+        </div>
+        <div class="team-card">
+          <span class="icon">👑</span>
+          <h3>L Sanketh</h3>
+          <p>President</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="grid-2">
+        <div class="contact-info">
+          <h3><span>📍</span> Office Location</h3>
+          <p><strong>GUT No 16 Warha, Bari, National Highway-44,<br>
+          Kelapur, Yavatmal, Maharashtra, India.</strong></p>
+          <p><span style="font-size: 20px;">📞</span> <strong>Phone No:</strong> (Please inquire)</p>
+          <p><span style="font-size: 20px;">✉️</span> <strong>Mail ID:</strong> (Please inquire)</p>
+        </div>
+        <div class="contact-form">
+          <h3><span>💬</span> Send Us a Message</h3>
+          <form onsubmit="event.preventDefault(); alert('Thank you! We will get back soon.');">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea rows="4" placeholder="Your Message" required></textarea>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p style="font-size: 18px; font-weight: 600;">&copy; 2025 Roaor Multipurpose Society. All rights reserved.</p>
+      <p class="footer-subtitle">Social Justice • Human Dignity • Empowerment</p>
+      <div class="footer-icons">🌿 🐅 🌍</div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('active');
+      });
+      
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          mobileMenu.classList.remove('active');
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
